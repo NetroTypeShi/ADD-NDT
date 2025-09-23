@@ -51,6 +51,9 @@ fichero.createNewFile
 File fichero = new File("/Desktop/file.txt");
 fichero.exists();
 
+- Ruta absoluta: Ruta completa del recurso desde el directorio raíz
+- Ruta relativa : Representa una parte de la ruta, se tiene en cuenta el directorio actual
+
 ### Ejercicio 1
 ```java
 import java.io.File;
@@ -117,3 +120,7 @@ public class MyClass {
 }
 ```
 
+### Ejercicio 5
+```java
+
+```
