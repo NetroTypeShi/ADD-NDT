@@ -54,6 +54,13 @@ fichero.exists();
 - Ruta absoluta: Ruta completa del recurso desde el directorio raíz
 - Ruta relativa : Representa una parte de la ruta, se tiene en cuenta el directorio actual
 
+- Método : [String] getPath()
+- Devuelve la ruta relativa
+- Ejemplo:
+File fichero = new File("/Desktop/folder");
+fichero.getPath();
+fichero.getAbsolutePath();
+
 ### Ejercicio 1
 ```java
 import java.io.File;
@@ -121,6 +128,25 @@ public class MyClass {
 ```
 
 ### Ejercicio 5
+```java
+import java.io.File;
+
+public class MyClass {
+  public static void main(String args[]) {
+    
+    String[] dias = {"Lunes", "Martes", "Miércoles", "Jueves", "Viernes", "Sábado", "Domingo"};
+    for (String dia : dias) {
+        File dir = new File("P1/"+dia);
+        if (!dir.exists()){
+            dir.mkdir();
+            System.out.println("Se ha creado el directorio con ruta absoluta:"+ dir.getAbsolutePath());
+        }
+   }
+   
+ }
+}
+```
+### Ejercicio 6
 ```java
 
 ```
