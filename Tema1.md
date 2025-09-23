@@ -20,9 +20,11 @@ File fichero = new File("/Desktop/file.txt");
 ```
 - Método: [boolean]createNewFile()
 - Crear Fichero: Crear un fichero nuevo y vacío con la  ruta indicada en el constructor
-- Ejemplo: File fichero = new File("/Desktop/file.txt");
-  fichero.createNewFile
-  
+- Ejemplo:
+```java
+File fichero = new File("/Desktop/file.txt");
+fichero.createNewFile
+```
 - Método: [boolean]delete()
 - Borrar Fichero
 
@@ -42,6 +44,12 @@ File fichero = new File("/Desktop/file.txt");
   File fichero1 = new File("/Desktop/file.txt");
   File fichero2 = new File("/Desktop/file.txt");
   fichero1.renameTo(fichero2);
+
+- Método: [boolean]exists()
+-  Si existe o no
+-  Ejemplo :
+File fichero = new File("/Desktop/file.txt");
+fichero.exists();
 
 ### Ejercicio 1
 ```java
@@ -93,6 +101,19 @@ public class MyClass {
 
 ### Ejercicio 4
 ```java
+import java.io.File;
 
+public class MyClass {
+  public static void main(String args[]) {
+    
+    String[] dias = {"Lunes", "Martes", "Miércoles", "Jueves", "Viernes", "Sábado", "Domingo"};
+    for (String dia : dias) {
+        File dir = new File("P1/"+dia);
+        if (!dir.exists()){
+            dir.mkdir();
+        }
+  }
+}
+}
 ```
 
