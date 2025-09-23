@@ -61,6 +61,9 @@ File fichero = new File("/Desktop/folder");
 fichero.getPath();
 fichero.getAbsolutePath();
 
+- Metodo: [ File[]] listFiles();
+- Devuelve un Array de Files que representan los ficheros del directorio
+- Ejemplo:  File fichero = new File("/Desktop/folder");
 ### Ejercicio 1
 ```java
 import java.io.File;
