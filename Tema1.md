@@ -51,4 +51,20 @@ public class MyClass {
 
 ### Ejercicio 2
 
+```java
+import java.io.File;
+
+public class MyClass {
+  public static void main(String args[]) {
+      
+    String[] dias = {"Lunes", "Martes", "Miércoles", "Jueves", "Viernes", "Sábado", "Domingo"};
+    for (String dia : dias) {
+        File dir = new File("P1/"+dia);
+        dir.mkdir();
+  }
+}
+    
+}
+```
+
 
