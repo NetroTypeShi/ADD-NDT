@@ -34,7 +34,14 @@ File fichero = new File("/Desktop/file.txt");
 - Método: [String] getName()
 - Devuelve el PathName
 - Ejemplo: File fichero = new File("/Desktop/file.txt");
-  fichero.getName();     
+  fichero.getName();
+
+- Método: [boolean] renameTo(File dest)
+- Renombra el fichero y lo mueve
+- Ejemplo:
+  File fichero1 = new File("/Desktop/file.txt");
+  File fichero2 = new File("/Desktop/file.txt");
+  fichero1.renameTo(fichero2);
 
 ### Ejercicio 1
 ```java
@@ -63,8 +70,29 @@ public class MyClass {
         dir.mkdir();
   }
 }
+}
+```
+
+### Ejercicio 3
+```java
+import java.io.File;
+
+public class MyClass {
+  public static void main(String args[]) {
+        String[] dias = {"Lunes", "Martes", "Miércoles", "Jueves", "Viernes", "Sábado", "Domingo"};
+        for (String dia : dias) {
+        File origin = new File("P1/"+dia);
+        File destination = new File("P1/cine_granada"+ dia);
+        origin.renameTo(destination);
+        
+    }
+ }
     
 }
 ```
 
+### Ejercicio 4
+```java
+
+```
 
