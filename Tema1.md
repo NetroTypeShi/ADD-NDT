@@ -63,7 +63,13 @@ fichero.getAbsolutePath();
 
 - Metodo: [ File[]] listFiles();
 - Devuelve un Array de Files que representan los ficheros del directorio
-- Ejemplo:  File fichero = new File("/Desktop/folder");
+- Ejemplo:
+  File fichero = new File("/Desktop/folder");
+  fichero.listFiles();
+
+- Método: [boolean] canWrite();
+- [boolean] canRead();
+
 ### Ejercicio 1
 ```java
 import java.io.File;
@@ -151,5 +157,119 @@ public class MyClass {
 ```
 ### Ejercicio 6
 ```java
+ public static void main(String args[]) {
+    
+    File cine = new File ("P1/cine_granada")
+    String [] archivos = cine.list();
+System.out.println("Archivos creados hasta ahora:")
+if (archivos != null){
+for (String.nombre
+   }
+   
+ }
+}
 
+```
+
+### Ejercicio 7
+```java
+import java.io.File;
+
+public class MyClass {
+  public static void main(String[] args) {
+    
+    String[] dias = {"Lunes", "Martes", "Miércoles", "Jueves", "Viernes", "Sábado", "Domingo"};
+    for (String dia : dias) {
+        File archivo = new File("P1/"+dia+"/sesiones.txt");
+        archivo.createNewFile();
+   }
+   
+ }
+}
+```
+
+### Formas de acceder a un fichero
+- Secuencial: Acceder al fichero carácter a carácter de forma ordenada desde el inicio hasta el final
+- Aleatorio: Permite acceder a posiciones concretas de nuestro dichero
+
+#### Lectura
+-  Clase: FileInputStream
+-  Constructor: FileInputStream(String name/ File File)
+- Leer datos en bruto
+
+- Clase: [int]read()
+- Lee un byte del fichero
+- FileImputStream entrada = new
+  FileImputStream("desktop/fichero.bin");
+  entrada.read();
+  entrada.close();
+
+- Clase: write(byte[]b)
+- Escribe un conjunto de bytes en un fichero
+- FileOutputStream output = new
+FileOutputStream("desktop/fichero.txt");
+String cadena "prueba de escritura";
+byte[] arrayBytes= cadena.getBytes();
+output.write(arrayByte);
+outout.close();
+
+### Ejercicio 8
+```java
+import java.io.File;
+
+public class MyClass {
+  public static void main(String[] args) {
+    
+    String[] dias = {"Lunes", "Martes", "Miércoles", "Jueves", "Viernes", "Sábado", "Domingo"};
+    for (String dia : dias) {
+        File dir = new File("P1/"+dia);
+        if (!dir.exists()){
+            dir.mkdir();
+            System.out.println("Se ha creado el directorio con ruta absoluta:"+ dir.getAbsolutePath());
+        }
+        File archivo = new File("P1/"+dia+"/sesiones.txt");
+        archivo.createNewFile();
+        FileOutputStream output = new FileOutputStream("P1/Lunes/sesiones.txt");
+        String cadena = "Spiderman (2002): 18:00 - 20:07";
+        byte[] arrayBytes= cadena.getBytes();
+        output.write(arrayByte);
+        output.close();
+   }
+ }
+}
+```
+
+### Ejercicio 9
+```java
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
+
+public class MyClass {
+  public static void main(String[] args) {
+    
+    String[] dias = {"Lunes", "Martes", "Miércoles", "Jueves", "Viernes", "Sábado", "Domingo"};
+    for (String dia : dias) {
+        File dir = new File("P1/"+dia);
+        if (!dir.exists()){
+            dir.mkdir();
+            System.out.println("Se ha creado el directorio con ruta absoluta:"+ dir.getAbsolutePath());
+        }
+        File archivo = new File("P1/"+dia+"/sesiones.txt");
+        archivo.createNewFile();
+        FileOutputStream output = new FileOutputStream(archivo);
+        String cadena = "Spiderman (2002): 18:00 - 20:07";
+        output.write(cadena.getBytes());
+        output.close();
+        
+        FileInputStream input = new FileInputStream(archivo);
+        
+        int i;
+        
+        while((i = input.read()) != -1 ){
+            System.out.print((char) i);
+        }
+   }
+ }
+}
 ```
