@@ -273,3 +273,55 @@ public class MyClass {
  }
 }
 ```
+- Clase: Random Access
+- Constructor: RandomAccessFile(String path, string mode) / RandomAccessFile(File file, string mode)
+- Modos de acceso:
+r Modo lectura
+rw Modo lectura y escritura
+rwd Lectura y escritura síncrona (No garantiza actualización de metadatos)
+rws Lectura y escritura síncrona (Garantiza actualización de metadatos)
+
+- Clase: seek (long position)
+- Permite posicionarnos en el punto que indiquemos en el fichero
+- RandomAccessFile file = new RandomAccessFile(String path, string mode)
+file.seek(12);
+RandomAccessFile file = new RandomAccessFile(String path, string mode);
+file.read( );
+//Permite leer un Byte donde está colocado el puntero
+file.readLine( );
+//Permite leer la siguiente línea de Bytes a partir de donde está colocado el
+puntero
+RandomAccessFile file = new RandomAccessFile(String path, string mode);
+file.write(“Example”.getBytes());
+//Permite escribir un Byte donde está colocado el puntero
+//El puntero avanza tras escribir
+file.writeBytes(“Example”);
+//Permite escribir un String como una secuencia de Bytes
+
+### Ejercicio 10
+```java
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
+import java.io.RandomAccessFile;
+import java.io.IOException;
+
+public class MyClass {
+    public static void main(String[] args) {
+        File archivo = new File ("P1/cine_granada/Miércoles/sesiones.txt");
+        
+        RandomAccessFile raf = new RandomAccessFile (archivo, "rws");
+        raf.writeBytes("Titanic (1998): 17:00 - 20:15");
+        
+        raf.seek("Titanic(".length());
+        raf.writeBytes("1997");
+        
+        String linea;
+        while ((linea = raf.readLine() != null)){
+            System.outprintln(linea);
+        }
+        
+    }
+}
+
+```
