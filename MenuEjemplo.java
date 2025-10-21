@@ -5,6 +5,8 @@ public class MenuEjemplo {
     static String ROOT = "cinema2000";
     static String USERS_FILE = ROOT + "/users.txt";
     static String REVIEWS_DIR = ROOT + "/reviews/";
+    static String nombre;
+    static int codigo;
 
     static final String[] PELICULAS = {
         "El Padrino", "Titanic", "Interestelar", "La La Land", "Forrest Gump"
@@ -46,11 +48,7 @@ public class MenuEjemplo {
     }
 
     static void crearUsuario(Scanner sc) {
-        System.out.print("Introduce nombre: ");
-        String nombre = sc.nextLine();
-        System.out.print("Introduce código numérico: ");
-        int codigo = sc.nextInt();
-        sc.nextLine();
+        PeticionesConsola(sc);
         System.out.print("Introduce contraseña: ");
         String password = sc.nextLine();
 
@@ -72,13 +70,7 @@ public class MenuEjemplo {
     }
 
     static void eliminarUsuario(Scanner sc) {
-        System.out.print("Introduce nombre: ");
-        String nombre = sc.nextLine();
-        System.out.print("Introduce código: ");
-        int codigo = sc.nextInt();
-        // pide un numero pal codigo
-        sc.nextLine();
-
+        PeticionesConsola(sc);
         StringBuilder nuevosUsuarios = new StringBuilder();
         boolean eliminado = false;
         try {
@@ -116,11 +108,7 @@ public class MenuEjemplo {
     }
 
     static void añadirReview(Scanner sc) {
-    System.out.print("Introduce tu nombre: ");
-    String nombre = sc.nextLine();
-    System.out.print("Introduce tu código: ");
-    int codigo = sc.nextInt();
-    sc.nextLine();
+    PeticionesConsola(sc);
 
     if (!buscarUsuario(nombre, codigo)) {
         System.out.println("Usuario no encontrado.");
@@ -163,12 +151,7 @@ public class MenuEjemplo {
 }
 
     static void mostrarReviews(Scanner sc) {
-        System.out.print("Introduce nombre: ");
-        String nombre = sc.nextLine();
-        System.out.print("Introduce código: ");
-        int codigo = sc.nextInt();
-        sc.nextLine();
-
+        PeticionesConsola(sc);
         String filename = REVIEWS_DIR + nombre + "-" + codigo + ".txt";
         File f = new File(filename);
         if (!f.exists()) {
@@ -188,6 +171,14 @@ public class MenuEjemplo {
         } catch (IOException e) {
             System.out.println("Error al leer reviews.");
         }
+    }
+    
+    public static void PeticionesConsola(Scanner sc){
+        System.out.print("Introduce nombre: ");
+        nombre = sc.nextLine();
+        System.out.print("Introduce código: ");
+        codigo = sc.nextInt();
+        sc.nextLine();
     }
 
     static boolean buscarUsuario(String nombre, int codigo) {
