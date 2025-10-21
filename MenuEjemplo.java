@@ -9,11 +9,13 @@ public class MenuEjemplo {
     static final String[] PELICULAS = {
         "El Padrino", "Titanic", "Interestelar", "La La Land", "Forrest Gump"
     };
+    // lista de peliculas
 
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
+        // SCANNER PA LEER INPUTS
         new File(REVIEWS_DIR).mkdirs();
-
+// crea el archivvo de las reviews
         int opcion;
         do {
             System.out.println("=== MENÚ PRINCIPAL ===");
@@ -60,10 +62,12 @@ public class MenuEjemplo {
         try {
             FileWriter fw = new FileWriter(USERS_FILE, true);
             fw.write(nombre + "," + codigo + "," + password + "\n");
+            // escribe el usuario junto con el nombre, contraseña y codigo
             fw.close();
             System.out.println("Usuario creado correctamente.");
         } catch (IOException e) {
             System.out.println("Error al crear usuario.");
+            // si no funciona el try da el error
         }
     }
 
@@ -72,6 +76,7 @@ public class MenuEjemplo {
         String nombre = sc.nextLine();
         System.out.print("Introduce código: ");
         int codigo = sc.nextInt();
+        // pide un numero pal codigo
         sc.nextLine();
 
         StringBuilder nuevosUsuarios = new StringBuilder();
@@ -81,12 +86,13 @@ public class MenuEjemplo {
             if (file.exists()) {
                 FileReader fr = new FileReader(file);
                 Scanner fileScanner = new Scanner(fr);
+                // añadi el file reader y el scanner, pa leer el archivo y pa pedir inputs por así decirlo
                 while (fileScanner.hasNextLine()) {
                     String linea = fileScanner.nextLine();
                     String[] partes = linea.split(",");
                     if (partes.length >= 2 && partes[0].equals(nombre) && Integer.parseInt(partes[1]) == codigo) {
                         eliminado = true;
-                        // No añadir este usuario
+                        // Eliminar el usuario
                     } else {
                         nuevosUsuarios.append(linea).append("\n");
                     }
