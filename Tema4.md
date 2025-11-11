@@ -38,8 +38,8 @@ ODBC:
 ## Conexiones
 
 ### Componentes: 
-  - La API de JDBC: Tenemos librerías y clases que facilitan el acceso a las BBDD relacionales. Nos da la oportunidad de realizar consultas a la BBCC
-  - Paquetes de prueba de JDBC: Validan los requisitos de los drivers previstos por el JDBC
+  - La API de JDBC: Tenemos librerías y clases que facilitan el acceso a las BBDD relacionales. Nos da la oportunidad de realizar consultas a la BBCC.
+  - Paquetes de prueba de JDBC: Validan los requisitos de los drivers previstos por el JDBC.
   - Gestor JDBC: realiza  la unión entre la aplicación Java con el driver apropiado JDBC. 
   Hay dos formas de realizar dicha operación:
     - Conexión directa
@@ -48,4 +48,6 @@ ODBC:
   - Arquitecturas:
   Las podemos identificar en dos tipos:
     - En dos capas: la app se conectará a la BBDD por un driver que se localicen junto a la app en el mismo sistema.
-    - 
+    - En tres capas: El aplicativo manda instrucciones al middleware, esta pilla la info y la envía a la BBDD traduciondos los comandos del aplicativo.
+      
+## Tipos
