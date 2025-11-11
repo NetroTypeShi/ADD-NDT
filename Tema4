@@ -1,0 +1,51 @@
+# Tema 4 Manejo de conectores
+
+## Conector
+Conjunto de clases y librerías que permiten unir la capa de aplicación con la capa de base de datos:
+  - Conecta BBDD
+  - Realiza consultas a la BBDD
+
+### Desfase del objeto relacional
+- Aplicación <-> Base de datos física
+- Objetos (Datos complejos) <-> Datos simples
+Se traducirán desde los objetos creados en java a los datos de la BBDD
+Se crearán entidades en ambas partes que representen lo mismo
+- Aplicación <-> Conector <-> BBDD física
+
+### Protocolos de accesos a las BBDD
+En java para hacer uno de BBDD de SQL:
+ - JDBC (Java Database Conecnectivity):
+    - Un código:
+      - JDBC: 
+        - Oracle
+        - SQL
+- ODBC (Open Database Connectivity)
+
+#### Propiedades
+
+JDBC:
+  - Solo java
+  - Multiplataforma
+  - Recimendado en java por buen rendimiento
+  - Orientado a objetos
+
+ODBC:
+  - C, C++ y java
+  - Solo windows
+  - No recomendado para java por conversiones de lenguajes que bajan el rendimiento
+  - No está orientado a objetos
+
+## Conexiones
+
+### Componentes: 
+  - La API de JDBC: Tenemos librerías y clases que facilitan el acceso a las BBDD relacionales. Nos da la oportunidad de realizar consultas a la BBCC
+  - Paquetes de prueba de JDBC: Validan los requisitos de los drivers previstos por el JDBC
+  - Gestor JDBC: realiza  la unión entre la aplicación Java con el driver apropiado JDBC. 
+  Hay dos formas de realizar dicha operación:
+    - Conexión directa
+    - A través de de un pool de conexione
+  - Puente JDBC-ODBC: Facilita el uso de drivers ODBC como si se trabajara con JDBC.
+  - Arquitecturas:
+  Las podemos identificar en dos tipos:
+    - En dos capas: la app se conectará a la BBDD por un driver que se localicen junto a la app en el mismo sistema.
+    - 
