@@ -1,4 +1,9 @@
+
 package tema4add;
+
+import java.io.File;
+
+//TODO: incluir los import necesarios
 import java.io.File;
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
@@ -11,7 +16,7 @@ public class ConfiguracionXML {
     private static String url;
     private static String usuario;
     private static String password;
-    
+
     // Bloque estático para cargar la configuración al iniciar la clase sin necesidad de crear un objeto de la clase
     static {
         try {
@@ -23,15 +28,14 @@ public class ConfiguracionXML {
             DocumentBuilder builder = factory.newDocumentBuilder();
             Document doc = builder.parse(file);
             doc.getDocumentElement().normalize();
-            
+
             Element root = doc.getDocumentElement();
-            
+
             driver = root.getElementsByTagName("driver").item(0).getTextContent();
-            url= root.getElementsByTagName("url").item(0).getTextContent();
-            usuario = root.getElementsByTagName("usuario").item(0).getTextContent();
+            url = root.getElementsByTagName("url").item(0).getTextContent();
+            usuario = root.getElementsByTagName("user").item(0).getTextContent();
             password = root.getElementsByTagName("password").item(0).getTextContent();
-            
-           
+
         } catch (Exception e) {
             System.err.println("Error al leer el fichero config.xml");
             e.printStackTrace();
@@ -54,6 +58,7 @@ public class ConfiguracionXML {
         return password;
     }
 }
+
 
 
 
