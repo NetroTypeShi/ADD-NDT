@@ -2,52 +2,144 @@
 
 ## Conector
 Conjunto de clases y librerías que permiten unir la capa de aplicación con la capa de base de datos:
-  - Conecta BBDD
+  - Conecta a la BBDD
   - Realiza consultas a la BBDD
 
-### Desfase del objeto relacional
+---
+
+## Desfase del objeto relacional
+Entre:
 - Aplicación <-> Base de datos física
-- Objetos (Datos complejos) <-> Datos simples
-Se traducirán desde los objetos creados en java a los datos de la BBDD
-Se crearán entidades en ambas partes que representen lo mismo
-- Aplicación <-> Conector <-> BBDD física
+- Objetos complejos <-> Datos simples
 
-### Protocolos de accesos a las BBDD
-En java para hacer uno de BBDD de SQL:
- - JDBC (Java Database Conecnectivity):
-    - Un código:
-      - JDBC: 
-        - Oracle
-        - SQL
-- ODBC (Open Database Connectivity)
+Este problema surge porque la programación orientada a objetos y las bases de datos relacionales tienen naturalezas distintas:
+- La BBDD usa **datos simples**  
+- La aplicación usa **objetos complejos**
 
-#### Propiedades
+Solución:
+- Traducir objetos Java a tablas
+- Crear entidades equivalentes en ambas capas
 
-JDBC:
-  - Solo java
-  - Multiplataforma
-  - Recimendado en java por buen rendimiento
-  - Orientado a objetos
+---
 
-ODBC:
-  - C, C++ y java
-  - Solo windows
-  - No recomendado para java por conversiones de lenguajes que bajan el rendimiento
-  - No está orientado a objetos
+## Protocolos de acceso
+En Java existen dos protocolos principales:
 
-## Conexiones
+### **JDBC (Java Database Connectivity)**
+- Solo Java  
+- Multiplataforma  
+- Recomendado por rendimiento  
+- Orientado a objetos  
 
-### Componentes: 
-  - La API de JDBC: Tenemos librerías y clases que facilitan el acceso a las BBDD relacionales. Nos da la oportunidad de realizar consultas a la BBCC.
-  - Paquetes de prueba de JDBC: Validan los requisitos de los drivers previstos por el JDBC.
-  - Gestor JDBC: realiza  la unión entre la aplicación Java con el driver apropiado JDBC. 
-  Hay dos formas de realizar dicha operación:
-    - Conexión directa
-    - A través de de un pool de conexione
-  - Puente JDBC-ODBC: Facilita el uso de drivers ODBC como si se trabajara con JDBC.
-  - Arquitecturas:
-  Las podemos identificar en dos tipos:
-    - En dos capas: la app se conectará a la BBDD por un driver que se localicen junto a la app en el mismo sistema.
-    - En tres capas: El aplicativo manda instrucciones al middleware, esta pilla la info y la envía a la BBDD traduciondos los comandos del aplicativo.
-      
-## Tipos
+### **ODBC (Open Database Connectivity)**
+- Usado por C, C++ y Java  
+- Solo Windows  
+- No recomendado en Java por pérdida de rendimiento  
+- No orientado a objetos  
+
+---
+
+## Conexiones – Componentes
+Los componentes principales de JDBC son:
+
+- **API JDBC**  
+  Librerías (java.sql, javax.sql) que permiten acceder a BBDD relacionales.
+
+- **Paquete de pruebas JDBC**  
+  Comprueba que los drivers cumplen el estándar.
+
+- **Gestor JDBC (DriverManager)**  
+  Conecta la app Java con el driver adecuado.  
+  Modos:
+    - Conexión directa  
+    - Pool de conexiones
+
+- **Puente JDBC–ODBC**  
+  Permite usar drivers ODBC desde JDBC.
+
+### Arquitecturas
+- **Dos capas:** app y driver en la misma máquina  
+- **Tres capas:** app → middleware → BBDD
+
+---
+
+## Tipos de drivers JDBC
+
+### **Tipo 1 – JDBC–ODBC**
+**Ventajas:**
+- Fácil de encontrar  
+- Acceso a drivers ODBC  
+
+**Inconvenientes:**
+- Bajo rendimiento  
+- Funcionalidad limitada  
+- Problemas con navegadores  
+
+---
+
+### **Tipo 2 – Driver nativo**
+**Ventajas:**
+- Buen rendimiento  
+
+**Inconvenientes:**
+- Requiere librerías del fabricante  
+- No portable entre plataformas  
+- No apto para aplicaciones en internet  
+
+---
+
+### **Tipo 3 – Middleware (tres capas)**
+**Ventajas:**
+- Muy portable  
+- Buen rendimiento en internet  
+- Escalable  
+
+**Inconvenientes:**
+- Requiere capa intermedia específica  
+
+---
+
+### **Tipo 4 – Protocolo nativo**
+**Ventajas:**
+- Muy buen rendimiento  
+- Totalmente desarrollado en Java  
+- No requiere software adicional  
+
+**Inconvenientes:**
+- Un driver distinto para cada tipo de BBDD  
+
+---
+
+## Configuración de una conexión en código
+
+Pasos iniciales:
+1. Descargar el driver `.jar` de la BBDD
+2. Añadirlo al proyecto Java
+
+### Registrar el driver:
+```java
+Class.forName(DRIVER);
+````
+
+### Establecer conexión
+```java
+Connection dbConnection =
+    DriverManager.getConnection(URL_CONEXION, usuario, password);
+```
+
+### Crear Statement
+```java
+Statement statement = dbConnection.createStatement();
+```
+
+### Realizar consulta
+```java
+ResultSet rs = statement.executeQuery(consulta);
+```
+
+### Recorrer resultados
+```java
+while (rs.next()) {
+    System.out.println(rs.getInt("ID"));
+}
+```
