@@ -18,10 +18,10 @@ public class ConexionBD {
         try {
             if (conexion == null || conexion.isClosed()) {
 
-                // 1. Cargar driver
+                // Cargar driver
                 Class.forName(ConfiguracionXML.getDriver());
 
-                // 2. Crear la conexión usando los valores del XML
+                // Crear la conexión usando los valores del XML
                 conexion = DriverManager.getConnection(
                         ConfiguracionXML.getUrl(),
                         ConfiguracionXML.getUsuario(),

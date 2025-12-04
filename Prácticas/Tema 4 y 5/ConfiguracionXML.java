@@ -17,7 +17,7 @@ public class ConfiguracionXML {
     private static String usuario;
     private static String password;
 
-    // Bloque estático para cargar la configuración al iniciar la clase sin necesidad de crear un objeto de la clase
+    // Bloque estático para cargar la configuración al iniciar la clase 
     static {
         try {
             // TODO: Establecer la ruta relativa del fichero XML

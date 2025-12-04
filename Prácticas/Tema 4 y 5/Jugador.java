@@ -6,11 +6,19 @@ public class Jugador {
     private String nombre;
     private String posicion;
     private boolean herido;
-    private int entrenadorId;
+    private Integer entrenadorId; // puede ser null
 
-    // Constructor
+    // Constructor jugador sin ID (pa inserta en la bd)
+    public Jugador(String nombre, String posicion, boolean herido, Integer entrenadorId) {
+        this.nombre = nombre;
+        this.posicion = posicion;
+        this.herido = herido;
+        this.entrenadorId = entrenadorId;
+    }
 
-    public Jugador(String nombre, String posicion, double valor, boolean herido, int entrenadorId) {
+    // Constructor con ID (pa leer de BD)
+    public Jugador(int id, String nombre, String posicion, boolean herido, Integer entrenadorId) {
+        this.id = id;
         this.nombre = nombre;
         this.posicion = posicion;
         this.herido = herido;
@@ -30,9 +38,10 @@ public class Jugador {
     public boolean isHerido() { return herido; }
     public void setHerido(boolean herido) { this.herido = herido; }
 
-    public int getEntrenadorId() { return entrenadorId; }
-    public void setEntrenadorId(int entrenadorId) { this.entrenadorId = entrenadorId; }
+    public Integer getEntrenadorId() { return entrenadorId; }
+    public void setEntrenadorId(Integer entrenadorId) { this.entrenadorId = entrenadorId; }
 }
+
 
 
 
