@@ -1,0 +1,7 @@
+practica7\practica7\Practica7Application.class
+practica7\practica7\repository\ObraRepository.class
+practica7\practica7\model\Sesion.class
+practica7\practica7\model\Obra.class
+practica7\practica7\repository\SesionRepository.class
+practica7\practica7\service\ObraService.class
+practica7\practica7\service\SesionService.class
