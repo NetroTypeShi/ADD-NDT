@@ -129,11 +129,6 @@ Es útil para construir consultas complejas sin concatenar strings SQL.
 ## 9. Notas finales y referencias
 - Material adaptado de las presentaciones del tema, que incluyen ejemplos paso a paso para crear el proyecto, configurar la BD y ejecutar operaciones básicas con Hibernate.
 
----
-
-Si quieres, puedo:
-- Generar una versión más extensa con fragmentos de `application.properties` y `pom.xml`.
-- Añadir diagramas simples o ejemplos adicionales (relaciones `@OneToMany`, `@ManyToOne`, etc.).
 
 ```
 Archivo: apuntes_tema7.md
